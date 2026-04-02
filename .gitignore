@@ -1,0 +1,14 @@
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# Maven (Archivos de compilación que tampoco deben subirse)
+target/
+**/target/
+
+# Logs y temporales
+*.log
+.DS_Store
