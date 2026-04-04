@@ -1,6 +1,8 @@
-package io.github.leandro12rk.product.model;
+package io.github.leandro12rk.product.model.product;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.leandro12rk.product.model.supplier.Supplier;
+import io.github.leandro12rk.product.model.category.Category;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,7 +21,7 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    private String sku;
     @Column(nullable = false, length = 100)
     private String name;
 
@@ -30,13 +32,14 @@ public class Product {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "category_id") // Apunta al id de categories
-     @JsonProperty("category_id")
+    @JsonProperty("category_id")
     private Category category;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "supplier_id") // Apunta al id de suppliers
     private Supplier supplier;
 
+    private boolean status;
     @Column(name = "created_at", insertable = false, updatable = false)
     private java.time.LocalDateTime createdAt;
 

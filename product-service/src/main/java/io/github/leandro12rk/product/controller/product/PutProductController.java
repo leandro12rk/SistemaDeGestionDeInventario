@@ -1,6 +1,6 @@
 package io.github.leandro12rk.product.controller.product;
 
-import io.github.leandro12rk.product.model.Product;
+import io.github.leandro12rk.product.model.product.Product;
 import io.github.leandro12rk.product.repository.ProductRepository;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -27,7 +27,8 @@ public class PutProductController {
             product.setName(productDetails.getName());
             product.setDescription(productDetails.getDescription());
             product.setPrice(productDetails.getPrice());
-
+            product.setSku(productDetails.getSku());
+            product.setStatus(productDetails.isStatus());
             if (productDetails.getCategory() != null) {
                 product.setCategory(productDetails.getCategory());
             }

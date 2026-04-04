@@ -1,7 +1,7 @@
 package io.github.leandro12rk.product.controller.product;
 
 
-import io.github.leandro12rk.product.model.Product;
+import io.github.leandro12rk.product.model.product.Product;
 import io.github.leandro12rk.product.repository.ProductRepository;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

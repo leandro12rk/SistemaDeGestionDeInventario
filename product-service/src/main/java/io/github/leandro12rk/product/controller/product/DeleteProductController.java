@@ -10,18 +10,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class DeleteProductController {
     private final ProductRepository productRepository;
 
-
     public DeleteProductController(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }
 
-    @DeleteMapping("/{id}")
-    public String deleteProduct(@PathVariable Long id) {
-        return productRepository.findById(id)
-                .map(product -> {
-                    productRepository.delete(product);
-                    return "Producto con ID " + id + " eliminado correctamente.";
-                })
-                .orElse("Error: No se encontró el producto con ID " + id);
+    @DeleteMapping("/{productId}")
+    public String deleteProduct(@PathVariable Long productId) {
+        return productRepository.findById(productId).map(product -> {
+            productRepository.delete(product);
+            return "Producto con ID " + productId + " eliminado correctamente.";
+        }).orElse("Error: No se encontró el producto con ID " + productId);
     }
 }

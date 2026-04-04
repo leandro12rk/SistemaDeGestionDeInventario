@@ -1,7 +1,8 @@
 package io.github.leandro12rk.product.controller.product;
 
-import io.github.leandro12rk.product.model.Product;
+import io.github.leandro12rk.product.projection.product.ProductGetProjection;
 import io.github.leandro12rk.product.repository.ProductRepository; // Ojo a la escritura de "repository"
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,13 +21,18 @@ public class GetProductController {
         this.productRepository = productRepository;
     }
 
+    // 1. Obtener todos los productos
     @GetMapping("/")
-    public List<Product> getAllProducts() {
-        return productRepository.findAll();
+    public List<ProductGetProjection> getAllProducts() {
+        return productRepository.findAllProjectedBy();
     }
 
+    // 2. Obtener un producto por ID
     @GetMapping("/{productId}")
-    public Product getProductById(@PathVariable Long productId) {
-        return productRepository.findById(productId).orElse(null);
+    public ResponseEntity<ProductGetProjection> getProductById(@PathVariable Long productId) {
+
+        return productRepository.findProjectedById(productId)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 }

@@ -1,33 +1,53 @@
 -- Estructura
-CREATE TABLE purchase_orders
-(
-    id           SERIAL PRIMARY KEY,
-    supplier_id  INTEGER, -- Referencia al ID del otro servicio
-    order_date   TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    status       VARCHAR(20) CHECK (status IN ('PENDING', 'APPROVED', 'RECEIVED', 'CANCELLED')),
-    total_amount NUMERIC(12, 2)
+CREATE TABLE inventory (
+                           id SERIAL PRIMARY KEY,
+                           product_id INTEGER NOT NULL UNIQUE,
+                           quantity INTEGER NOT NULL DEFAULT 0,
+                           last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE purchase_order_details
-(
-    id                SERIAL PRIMARY KEY,
-    purchase_order_id INTEGER REFERENCES purchase_orders (id),
-    product_id        INTEGER, -- Referencia al ID del servicio de productos
-    quantity_ordered  INTEGER        NOT NULL,
-    unit_price        NUMERIC(10, 2) NOT NULL
+CREATE TABLE goods_receipts (
+                                id SERIAL PRIMARY KEY,
+                                purchase_order_id INTEGER,
+                                received_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                                received_by VARCHAR(100)
+);
+
+-- Movimientos para auditoría
+CREATE TABLE stock_movements (
+                                 id SERIAL PRIMARY KEY,
+                                 product_id INTEGER NOT NULL,
+                                 type VARCHAR(10) CHECK (type IN ('IN', 'OUT', 'ADJUSTMENT')),
+                                 amount INTEGER NOT NULL,
+                                 reason TEXT,
+                                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 
--- 100 Órdenes de Compra
-INSERT INTO purchase_orders (supplier_id, order_date, status, total_amount)
-SELECT (floor(random() * 10) + 1),
-       NOW() - (random() * interval '60 days'), -- Fechas de los últimos 2 meses
-       (ARRAY['PENDING', 'APPROVED', 'RECEIVED', 'CANCELLED'])[floor(random() * 4) + 1],
-    0
-FROM generate_series(1, 100) s(i);
+INSERT INTO inventory (product_id, quantity)
+VALUES
+    (1, 15),  -- MacBook Air M2
+    (2, 8),   -- Dell XPS 13
+    (11, 20), -- Monitores LG 4K
+    (21, 50), -- SSD Samsung 980 Pro
+    (31, 12), -- Procesadores Ryzen 7
+    (41, 30), -- Mouse Logitech G Pro
+    (51, 25), -- Routers TP-Link
+    (61, 10), -- Impresoras Epson L3210
+    (71, 3),  -- Servidor Dell R750
+    (81, 100);-- Licencias Windows 11
 
--- 100 Detalles de Órdenes
-INSERT INTO purchase_order_details (purchase_order_id, product_id, quantity_ordered, unit_price)
-SELECT (floor(random() * 100) + 1), (floor(random() * 100) + 1), (ARRAY[5, 10, 20, 50])[floor(random() * 4) + 1], -- Cantidades realistas
-    (random() * 400 + 20)::numeric(10,2)
-FROM generate_series(1, 100) s(i);
+
+INSERT INTO goods_receipts (purchase_order_id, received_by)
+VALUES
+    (1, 'Leandro R.'), -- Recepción de la orden de Intcomex
+    (4, 'Carlos M.');  -- Recepción de la orden de Logitech
+
+INSERT INTO stock_movements (product_id, type, amount, reason)
+VALUES
+    (1, 'IN', 15, 'Carga inicial de inventario'),
+    (2, 'IN', 10, 'Entrada por Orden de Compra #2'),
+    (11, 'OUT', 2, 'Venta directa a cliente corporativo'),
+    (21, 'ADJUSTMENT', -1, 'Unidad dañada en bodega'),
+    (41, 'IN', 30, 'Abastecimiento mensual Logitech'),
+    (51, 'OUT', 5, 'Despacho a sucursal vía España');

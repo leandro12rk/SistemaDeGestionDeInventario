@@ -24,6 +24,9 @@ CREATE TABLE stock_movements (
                                  reason TEXT,
                                  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+
+
 -- 100 Registros de Inventario (Sincronizados con los productos)
 INSERT INTO inventory (product_id, quantity, last_updated)
 SELECT
