@@ -1,4 +1,4 @@
-package io.github.leandro12rk.product.controller;
+package io.github.leandro12rk.product.controller.product;
 
 import io.github.leandro12rk.product.model.Product;
 import io.github.leandro12rk.product.repository.ProductRepository; // Ojo a la escritura de "repository"

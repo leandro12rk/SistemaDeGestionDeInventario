@@ -1,4 +1,4 @@
-package io.github.leandro12rk.product.controller;
+package io.github.leandro12rk.product.controller.product;
 
 
 import io.github.leandro12rk.product.model.Product;
@@ -17,10 +17,8 @@ public class PostProductController {
         this.productRepository = productRepository;
     }
 
-    @PostMapping("/") // La ruta final será /api/v01/producto/
+    @PostMapping("/")
     public Product createProduct(@RequestBody Product product) {
-        // El método .save() recibe el objeto, lo inserta en Postgres
-        // y te devuelve el objeto ya con el ID generado.
         return productRepository.save(product);
     }
 

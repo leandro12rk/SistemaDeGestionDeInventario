@@ -1,0 +1,46 @@
+version: '3.8'
+name: sistema-inventario-db
+services:
+  db-products:
+    image: postgres:16-alpine
+    container_name: db-products
+    environment:
+      - POSTGRES_DB=product_db
+      - POSTGRES_USER=adminUser
+      - POSTGRES_PASSWORD=admin
+    ports:
+      - "5435:5432"
+    volumes:
+      - ./product_init.sql:/docker-entrypoint-initdb.d/init.sql
+      - products_data:/var/lib/postgresql/data
+
+  db-inventory:
+    image: postgres:16-alpine
+    container_name: db-inventory
+    environment:
+      - POSTGRES_DB=inventory_db
+      - POSTGRES_USER=adminUser
+      - POSTGRES_PASSWORD=admin
+    ports:
+      - "5433:5432"
+    volumes:
+      - ./inventory_init.sql:/docker-entrypoint-initdb.d/init.sql
+      - inventory_data:/var/lib/postgresql/data
+
+  db-purchase:
+    image: postgres:16-alpine
+    container_name: db-purchase
+    environment:
+      - POSTGRES_DB=purchase_db
+      - POSTGRES_USER=adminUser
+      - POSTGRES_PASSWORD=admin
+    ports:
+      - "5434:5432"
+    volumes:
+      - ./purchase_init.sql:/docker-entrypoint-initdb.d/init.sql
+      - purchase_data:/var/lib/postgresql/data
+
+volumes:
+  products_data:
+  inventory_data:
+  purchase_data:

@@ -7,9 +7,9 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.5.13</version> <relativePath/>
+        <version>3.5.13</version>
+        <relativePath/>
     </parent>
-
 
 
     <groupId>io.github.leandro12rk</groupId>
@@ -21,10 +21,12 @@
         <module>gateway-service</module>
         <module>product-service</module>
         <module>inventory-service</module>
+        <module>purchase-service</module>
     </modules>
 
     <properties>
-        <java.version>25</java.version> <spring-cloud.version>2024.0.0</spring-cloud.version>
+        <java.version>25</java.version>
+        <spring-cloud.version>2024.0.0</spring-cloud.version>
     </properties>
 
     <dependencyManagement>

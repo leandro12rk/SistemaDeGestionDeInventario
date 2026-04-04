@@ -1,4 +1,4 @@
-package io.github.leandro12rk.product.controller;
+package io.github.leandro12rk.product.controller.product;
 
 import io.github.leandro12rk.product.model.Product;
 import io.github.leandro12rk.product.repository.ProductRepository;
@@ -22,12 +22,18 @@ public class PutProductController {
     public Product updateProduct(@PathVariable Long productId, @RequestBody Product productDetails) {
         // 1. Buscamos si el producto existe antes de intentar actualizar
         return productRepository.findById(productId).map(product -> {
+            product.setId(productId);
             // 2. Actualizamos los campos con los nuevos datos que vienen en el Body
             product.setName(productDetails.getName());
             product.setDescription(productDetails.getDescription());
-            product.setCategory(productDetails.getCategory());
             product.setPrice(productDetails.getPrice());
 
+            if (productDetails.getCategory() != null) {
+                product.setCategory(productDetails.getCategory());
+            }
+            if (productDetails.getSupplier() != null) {
+                product.setSupplier(productDetails.getSupplier());
+            }
             // 3. Guardamos los cambios (esto disparará un UPDATE en SQL)
             return productRepository.save(product);
         }).orElse(null); // Aquí podrías lanzar una excepción personalizada después
