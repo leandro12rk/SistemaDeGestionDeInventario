@@ -1,36 +1,40 @@
-# Sistema de Gestion de Inventario
-# Product and Inventory System (Microservices)
+# 📦 Sistema de Gestión de Inventario (Full Stack Microservices)
 
-Este proyecto es una arquitectura de microservicios diseñada para gestionar el inventario y catálogo de productos de forma escalable.
+Proyecto educativo de alto nivel desarrollado por [Leandro](https://github.com/leandro12rk). Se enfoca en una arquitectura de microservicios distribuida para el control total de suministros, compras y existencias, utilizando tecnología de punta en el ecosistema Java.
 
-## 🏗️ Arquitectura del Sistema
+## 🏗️ Arquitectura de Microservicios
+El sistema utiliza una topología de "Base de Datos por Servicio" para garantizar el desacoplamiento:
 
-![Diagrama de Arquitectura](./image/microservice-estructure.png)
+1. **Config Server:** Centraliza la configuración de todos los nodos.
+2. **Discovery Server (Eureka):** Registro y localización dinámica de servicios.
+3. **Gateway Service:** Puerta de enlace única para las peticiones del Frontend.
+4. **Product Service (Puerto 8081):** Gestión de Catálogo, Categorías y Proveedores.
+5. **Inventory Service (Puerto 8082):** Control de Stock y Auditoría de Movimientos.
+6. **Purchase Service (Puerto 8092):** Órdenes de Compra y Recepción de Mercancía.
 
-El sistema se compone de los siguientes módulos:
+## 🚀 Infraestructura con Docker
+El proyecto incluye un entorno de contenedores para gestionar múltiples instancias de PostgreSQL en puertos dedicados:
+* `db-products`: Puerto 5433
+* `db-inventory`: Puerto 5434
+* `db-purchases`: Puerto 5435
 
-* **API Gateway:** Punto de entrada único para las peticiones. Se encarga del enrutamiento y la seguridad.
-* **Eureka Server:** Service Discovery que permite que los microservicios se encuentren entre sí dinámicamente.
-* **Product Microservice:** Gestión del catálogo, precios y detalles de productos.
-* **Inventory Microservice:** Control de stock y disponibilidad en tiempo real.
+## 🛠️ Tecnologías
+* **Backend:** Java 26 / Spring Boot 3.5.13
+* **Comunicación:** Spring Cloud (Eureka, Config, OpenFeign)
+* **Persistencia:** Spring Data JPA / PostgreSQL
+* **Herramientas:** Maven, Docker Desktop, IntelliJ IDEA
 
-## 🛠️ Tecnologías Utilizadas
+## 📂 Estructura del Proyecto
+```text
+.
+├── config-service/      # Servidor de configuración
+├── discovery-service/   # Eureka Server
+├── gateway-service/     # API Gateway
+├── product-service/     # Catálogo y Maestros
+├── inventory-service/   # Stock y Movimientos
+└── purchase-service/    # Compras y Recepción
+```
+⚖️ Licencia
+Este proyecto está bajo la Licencia MIT. Consulta el archivo LICENSE para más detalles.
 
-| Componente | Tecnología |
-| :--- | :--- |
-| **Backend** | Java 17+, Spring Boot 3.x |
-| **Microservicios** | Spring Cloud (Eureka, Gateway) |
-| **Base de Datos** | PostgreSQL / MySQL (una por servicio) |
-| **Comunicación** | REST / OpenFeign |
-
-## 🚀 Cómo ejecutar localmente
-
-1. Levantar **Eureka Server** (Puerto 8761).
-2. Levantar los microservicios de **Producto e Inventario**.
-3. Levantar el **API Gateway**.
-4. Acceder a través del Gateway (ej: `http://localhost:8080/api/v01/products/1`).
-
-## 🖇️ Endpoints Principales (Gateway)
-* `GET /api/v01/products/{id}` - Obtener detalle de producto.
-* `GET /api/v01/inventory/{id}` - Consultar stock.
-* 
+© 2026 Leandro (leandro12rk). Todos los derechos reservados.

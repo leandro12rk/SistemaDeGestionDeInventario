@@ -1,37 +1,37 @@
-# --- IDEs (IntelliJ, VS Code, STS, NetBeans) ---
+# --- IDEs ---
 .idea/
 *.iml
-*.iws
-*.ipr
-out/
 .vscode/
-.classpath
-.project
-.settings/
-.springBeans
-.sts4-cache
-.apt_generated
-.factorypath
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docuser
 
-# --- Maven & Compilación ---
+# --- Java & Maven ---
 target/
-**/target/
-build/
-**/build/
+*.class
+*.jar
+*.war
+*.ear
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.utilsBackup
+pom.xml.vfsdump
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
 .mvn/wrapper/maven-wrapper.jar
 
-# --- Archivos de Spring Initializr ---
-HELP.md
-mvnw
-mvnw.cmd
-.mvn/
-
-# --- Sistema y Logs ---
-*.log
+# --- OS ---
 .DS_Store
 Thumbs.db
+
+# --- Config & Secrets (IMPORTANTE) ---
+*.log
+.env
+.env.local
+application.properties
+application-*.properties
+!src/main/resources/application.properties.example
