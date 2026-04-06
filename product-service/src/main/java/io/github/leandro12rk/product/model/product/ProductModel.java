@@ -1,8 +1,8 @@
 package io.github.leandro12rk.product.model.product;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.github.leandro12rk.product.model.supplier.Supplier;
-import io.github.leandro12rk.product.model.category.Category;
+import io.github.leandro12rk.product.model.supplier.SupplierModel;
+import io.github.leandro12rk.product.model.category.CategoryModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,7 +16,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Entity
 @Table(name = "products") // Nombre de la tabla en Postgres
-public class Product {
+public class ProductModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,11 +33,11 @@ public class Product {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "category_id") // Apunta al id de categories
     @JsonProperty("category_id")
-    private Category category;
+    private CategoryModel category;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "supplier_id") // Apunta al id de suppliers
-    private Supplier supplier;
+    private SupplierModel supplier;
 
     private boolean status;
     @Column(name = "created_at", insertable = false, updatable = false)

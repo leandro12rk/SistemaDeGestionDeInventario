@@ -8,7 +8,6 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @SpringBootApplication
 @EnableDiscoveryClient // Activa Eureka Client
 @EnableFeignClients    // Activa OpenFeign
-
 public class ProductServiceApplication {
 
     public static void main(String[] args) {

@@ -1,3 +1,8 @@
+DROP TABLE IF EXISTS suppliers;
+DROP TABLE IF EXISTS categories;
+DROP TABLE IF EXISTS products;
+
+
 CREATE TABLE suppliers
 (
     id           SERIAL PRIMARY KEY,
@@ -34,8 +39,6 @@ CREATE TABLE products
 );
 
 
-
-
 -- Categorías
 INSERT INTO categories (name, description, status)
 VALUES ('Laptops', 'Equipos portátiles para oficina y gaming', true),
@@ -51,15 +54,24 @@ VALUES ('Laptops', 'Equipos portátiles para oficina y gaming', true),
 
 -- Proveedores (Con datos de ciudad y país)
 INSERT INTO suppliers (company_name, contact_name, email, phone, address, city, country, status)
-VALUES ('Intcomex Panamá', 'Ricardo Pérez', 'ventas@intcomex.com.pa', '+507 300-1234', 'Costa del Este', 'Panamá', 'Panamá', true),
-       ('Solutek Panamá', 'María Castro', 'soporte@solutek.com.pa', '+507 200-5678', 'Vía España', 'Panamá', 'Panamá', true),
-       ('Dell Technologies', 'Carlos Ruiz', 'panama_sales@dell.com', '+507 800-DELL', 'Panamá Pacífico', 'Arraiján', 'Panamá', true),
-       ('HP Inc Panamá', 'Elena Gómez', 'contacto@hp.pa', '+507 260-1122', 'Torre de las Américas', 'Panamá', 'Panamá', true),
-       ('Logitech Latam', 'Luis Méndez', 'distribucion@logitech.com', '+507 6543-2100', 'Zona Libre Colón', 'Colón', 'Panamá', true),
-       ('Kingston Technology', 'Ana Ríos', 'latam_orders@kingston.com', '+507 321-0987', 'Área Bancaria', 'Panamá', 'Panamá', true),
-       ('Cisco Systems PA', 'Jorge Vega', 'partners@cisco.pa', '+507 210-4455', 'Oceania Business Plaza', 'Panamá', 'Panamá', true),
-       ('Microsoft Panamá', 'Sofía Alba', 'licenciamiento@microsoft.pa', '+507 301-9900', 'Calle 50', 'Panamá', 'Panamá', true),
-       ('Samsung Electronics', 'Kevin Chan', 'b2b.pa@samsung.com', '+507 205-1000', 'Multiplaza', 'Panamá', 'Panamá', true),
+VALUES ('Intcomex Panamá', 'Ricardo Pérez', 'ventas@intcomex.com.pa', '+507 300-1234', 'Costa del Este', 'Panamá',
+        'Panamá', true),
+       ('Solutek Panamá', 'María Castro', 'soporte@solutek.com.pa', '+507 200-5678', 'Vía España', 'Panamá', 'Panamá',
+        true),
+       ('Dell Technologies', 'Carlos Ruiz', 'panama_sales@dell.com', '+507 800-DELL', 'Panamá Pacífico', 'Arraiján',
+        'Panamá', true),
+       ('HP Inc Panamá', 'Elena Gómez', 'contacto@hp.pa', '+507 260-1122', 'Torre de las Américas', 'Panamá', 'Panamá',
+        true),
+       ('Logitech Latam', 'Luis Méndez', 'distribucion@logitech.com', '+507 6543-2100', 'Zona Libre Colón', 'Colón',
+        'Panamá', true),
+       ('Kingston Technology', 'Ana Ríos', 'latam_orders@kingston.com', '+507 321-0987', 'Área Bancaria', 'Panamá',
+        'Panamá', true),
+       ('Cisco Systems PA', 'Jorge Vega', 'partners@cisco.pa', '+507 210-4455', 'Oceania Business Plaza', 'Panamá',
+        'Panamá', true),
+       ('Microsoft Panamá', 'Sofía Alba', 'licenciamiento@microsoft.pa', '+507 301-9900', 'Calle 50', 'Panamá',
+        'Panamá', true),
+       ('Samsung Electronics', 'Kevin Chan', 'b2b.pa@samsung.com', '+507 205-1000', 'Multiplaza', 'Panamá', 'Panamá',
+        true),
        ('TP-Link Panamá', 'Raúl Díaz', 'sales.pa@tp-link.com', '+507 390-6677', 'Obarrio', 'Panamá', 'Panamá', true);
 
 

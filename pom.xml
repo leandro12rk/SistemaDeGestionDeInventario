@@ -22,6 +22,7 @@
         <module>product-service</module>
         <module>inventory-service</module>
         <module>purchase-service</module>
+        <module>eureka-server</module>
     </modules>
 
     <properties>

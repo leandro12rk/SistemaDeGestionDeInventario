@@ -1,9 +1,10 @@
 package io.github.leandro12rk.product.repository.supplier;
 
-import io.github.leandro12rk.product.model.category.Category;
+
+import io.github.leandro12rk.product.model.supplier.SupplierModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface SupplierRepository extends JpaRepository<Category, Long> {
+public interface SupplierRepository extends JpaRepository<SupplierModel, Long> {
 }

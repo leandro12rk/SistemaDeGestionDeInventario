@@ -13,7 +13,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Entity
 @Table(name = "suppliers")
-public class Supplier {
+public class SupplierModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
