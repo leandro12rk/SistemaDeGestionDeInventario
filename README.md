@@ -1,5 +1,5 @@
 # 📦 Sistema de Gestión de Inventario (Full Stack Microservices)
-wwww
+
 Proyecto educativo de alto nivel desarrollado por [Leandro](https://github.com/leandro12rk). Se enfoca en una arquitectura de microservicios distribuida para el control total de suministros, compras y existencias, utilizando tecnología de punta en el ecosistema Java.
 
 ## 🏗️ Arquitectura de Microservicios
