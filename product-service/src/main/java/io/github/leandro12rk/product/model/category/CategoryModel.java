@@ -26,7 +26,13 @@ public class CategoryModel {
 
     @NotBlank(message = "Missing Category Description")
     private String description;
-    
+
     @NotNull(message ="Missing Category Status")
     private boolean status;
+
+    @Column(name = "created_at", insertable = false, updatable = false)
+    private java.time.LocalDateTime createdAt;
+
+    @Column(name = " updated_at", insertable = false, updatable = false)
+    private java.time.LocalDateTime  updatedAt;
 }

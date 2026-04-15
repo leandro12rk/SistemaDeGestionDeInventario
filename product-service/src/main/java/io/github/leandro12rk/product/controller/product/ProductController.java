@@ -34,10 +34,16 @@ public class ProductController {
         return ResponseEntity.ok(productService.getProductName(productId));
     }
 
+    // Get Dashboard Data
+    @GetMapping("/dashboard")
+    public ResponseEntity<?> getDashboardData() {
+        return ResponseEntity.ok(productService.getDashboardData());
+    }
+
     // Delete Product By ID
     @DeleteMapping("/{productId}")
-    public ResponseEntity<Void> deleteProduct(@PathVariable Long productId) {
-        productService.deleteProduct(productId);
+    public ResponseEntity<Void> deleteProductById(@PathVariable Long productId) {
+        productService.deleteProductById(productId);
         return ResponseEntity.noContent().build();
     }
 
@@ -50,8 +56,8 @@ public class ProductController {
 
     // Update Product By ID
     @PutMapping("/{productId}")
-    public ResponseEntity<ProductModel> updateProduct(@PathVariable Long productId, @Valid @RequestBody ProductModel productDetails) {
-        return ResponseEntity.ok(productService.updateProduct(productId, productDetails));
+    public ResponseEntity<ProductModel> updateProductById(@PathVariable Long productId, @Valid @RequestBody ProductModel productDetails) {
+        return ResponseEntity.ok(productService.updateProductById(productId, productDetails));
     }
 
 }

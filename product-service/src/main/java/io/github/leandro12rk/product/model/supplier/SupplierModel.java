@@ -3,6 +3,7 @@ package io.github.leandro12rk.product.model.supplier;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -37,8 +38,8 @@ public class SupplierModel {
 
     @NotBlank(message = " Missing Address")
     private String address;
-    
-    @NotBlank(message = " Missing Status")
+
+    @NotNull(message = " Missing Status")
     private boolean status;
 
     @NotBlank(message = " Missing Country Location")
@@ -49,4 +50,8 @@ public class SupplierModel {
 
     @Column(name = "created_at", insertable = false, updatable = false)
     private java.time.LocalDateTime createdAt;
+
+    @Column(name = "update_at", insertable = false, updatable = false)
+    private java.time.LocalDateTime updateAt;
+
 }

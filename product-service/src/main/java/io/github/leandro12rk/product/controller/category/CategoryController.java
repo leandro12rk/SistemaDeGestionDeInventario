@@ -1,7 +1,11 @@
 package io.github.leandro12rk.product.controller.category;
 
 import io.github.leandro12rk.product.model.category.CategoryModel;
+import io.github.leandro12rk.product.model.supplier.SupplierModel;
 import io.github.leandro12rk.product.repository.category.CategoryRepository;
+import io.github.leandro12rk.product.service.category.CategoryService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,33 +15,39 @@ import java.util.List;
 @RequestMapping("/category")
 
 public class CategoryController {
-    CategoryRepository categoryRepository;
+    CategoryService categoryService;
 
-    public CategoryController(CategoryRepository categoryRepository) {
-        this.categoryRepository = categoryRepository;
+    public CategoryController(CategoryService categoryService) {
+        this.categoryService = categoryService;
     }
-    @DeleteMapping("/{categoryId}")
-    public void deleteProduct(@PathVariable("categoryId") Long categoryId) {
-        categoryRepository.deleteById(categoryId);
-    }
+
     @GetMapping
-    public List<CategoryModel> getAllCategory(){
-        return  categoryRepository.findAll();
+    public ResponseEntity<List<CategoryModel>> getAllCategory() {
+        return ResponseEntity.ok(categoryService.getAllCategory());
     }
 
     @GetMapping("/{categoryId}")
-    public CategoryModel getCategoryById(@PathVariable("categoryId") Long categoryId){
-        return categoryRepository.findById(categoryId).orElse(null);
+    public CategoryModel getCategoryById(@PathVariable("categoryId") Long categoryId) {
+        return categoryService.getCategoryById(categoryId);
+    }
+
+    @DeleteMapping("/{categoryId}")
+    // Delete Product By ID
+    public ResponseEntity<Void> deleteCategoryByID(@PathVariable Long productId) {
+        categoryService.deleteCategoryById(productId);
+        return ResponseEntity.noContent().build();
     }
 
     @PostMapping
-    public CategoryModel CreateCategory(@RequestBody CategoryModel categoryModel) {
-        return categoryRepository.save(categoryModel);
+    public ResponseEntity<CategoryModel> createNewCategory(@RequestBody CategoryModel category) {
+        CategoryModel created = categoryService.createNewCategory(category);
+        return ResponseEntity.status(HttpStatus.CREATED).body(created);
     }
 
-//    @PutMapping
-//    public Category UpdateCategory(@RequestBody Category category) {
-//        return categoryRepository.save(category);
-//    }
+    @PutMapping("/{categoryId}")
+    public ResponseEntity<CategoryModel> updateCategoryById(@PathVariable Long categoryId, @RequestBody CategoryModel category) {
+        return ResponseEntity.ok(categoryService.updateCategoryById(categoryId, category));
+    }
+
 
 }
