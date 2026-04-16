@@ -6,6 +6,8 @@ import io.github.leandro12rk.product.projection.product.ProductGetProjection;
 import io.github.leandro12rk.product.projection.product.ProductNameProjection;
 import io.github.leandro12rk.product.repository.product.ProductRepository;
 import io.github.leandro12rk.product.service.product.ProductService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/products")
+@Tag(name = "Productos", description = "Operaciones relacionadas con el catálogo de productos")
 public class ProductController {
     private final ProductService productService;
 
@@ -23,6 +26,7 @@ public class ProductController {
     }
 
     //  Get All Products
+    @Operation(summary = "Obtener producto por ID", description = "Retorna los detalles del producto incluyendo su stock actual")
     @GetMapping
     public ResponseEntity<List<ProductGetProjection>> getAllProducts(@ModelAttribute ProductFilterDTO filter) {
         return ResponseEntity.ok(productService.getAllProducts(filter));

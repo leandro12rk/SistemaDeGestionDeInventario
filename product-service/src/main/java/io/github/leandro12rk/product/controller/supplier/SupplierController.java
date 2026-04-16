@@ -4,6 +4,7 @@ package io.github.leandro12rk.product.controller.supplier;
 import io.github.leandro12rk.product.model.supplier.SupplierModel;
 import io.github.leandro12rk.product.projection.supplier.SupplierNameProjection;
 import io.github.leandro12rk.product.service.supplier.SupplierService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +13,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/supplier")
+@Tag(name = "Supplier", description = "Supplier Module Gestion")
+
 public class SupplierController {
 
     SupplierService supplierService;

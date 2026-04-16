@@ -4,6 +4,7 @@ import io.github.leandro12rk.product.model.category.CategoryModel;
 import io.github.leandro12rk.product.model.supplier.SupplierModel;
 import io.github.leandro12rk.product.repository.category.CategoryRepository;
 import io.github.leandro12rk.product.service.category.CategoryService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/category")
+@Tag(name = "Category", description = "Category Module Gestion")
 
 public class CategoryController {
     CategoryService categoryService;

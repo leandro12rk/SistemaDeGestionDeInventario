@@ -15,7 +15,7 @@ import lombok.Setter;
 @Entity
 @Table(name = "goods_receipts") // Nombre de la tabla en Postgres
 
-public class GoodReceiptsModel {
+public class GoodsReceiptsModel {
 
 
     @Id
