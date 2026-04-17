@@ -7,12 +7,16 @@ request:
   auth: inherit
 
 docs:
-  content: |-
-    ### CRUD completo de categorias de producto.
+  content: |
+    ## Category Management API
 
-    GET Get All Category Information: lista categorias.
-    GET Get Category By Id: detalle de categoria por id.
-    POST Create a New Category: crea categoria.
-    PUT Update Category By Id: actualiza categoria.
-    DELETE Delete Category By Id: elimina categoria.
+    The Category Management module provides the following endpoints to handle product category operations:
+
+    | Method | Endpoint | Description |
+    | :--- | :--- | :--- |
+    | **GET** | `/categories` | Retrieve a list of all product categories. |
+    | **GET** | `/categories/{id}` | Retrieve details of a specific category by ID. |
+    | **POST** | `/categories` | Create a new product category. |
+    | **PUT** | `/categories/{id}` | Update existing category data by ID. |
+    | **DELETE** | `/categories/{id}` | Remove a category record by ID. |
   type: text/markdown

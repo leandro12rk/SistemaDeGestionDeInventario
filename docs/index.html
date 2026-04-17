@@ -1,26 +1,33 @@
 <!doctype html>
-<html lang="es">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Micro Service Inventory System - API Documentation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" />
     <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="https://cdn.opencollection.com/docs.css" />
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-yaml@4/dist/js-yaml.min.js"></script>
     <script src="https://cdn.opencollection.com/docs.js"></script>
   </head>
   <body>
     <header class="top-navbar">
       <h1 class="brand-title">Micro Service Inventory System</h1>
-      <nav class="nav-items" aria-label="Navegacion principal">
+      <nav class="nav-items" aria-label="Main navigation">
         <button class="nav-btn is-active" type="button" data-view="api">
           API Collections
         </button>
         <button class="nav-btn" type="button" data-view="architecture">
-          Arquitectura
+          Architecture
         </button>
         <button class="nav-btn" type="button" data-view="docs">
-          Documentacion API
+          API Documentation
         </button>
       </nav>
     </header>
@@ -29,7 +36,7 @@
       <section class="view-panel is-active" data-panel="api">
         <div class="panel-shell">
           <div id="opencollection-container">
-            <div class="app-loading">Cargando documentacion...</div>
+            <div class="app-loading">Loading documentation...</div>
           </div>
         </div>
       </section>
@@ -39,37 +46,37 @@
           <div class="arch-image-wrap">
             <img
               src="https://raw.githubusercontent.com/leandro12rk/SistemaDeGestionDeInventario/main/architecture/architectureMicroService.png"
-              alt="Arquitectura Micro Service Inventory System" />
+              alt="Micro Service Inventory System architecture" />
           </div>
           <div class="arch-copy">
-            <h2>Arquitectura del sistema</h2>
+            <h2>System architecture</h2>
             <p>
-              El sistema se organiza por microservicios y usa un API Gateway
-              como punto de entrada para exponer una sola ruta base.
+              The system is organized as microservices and uses an API Gateway
+              as a single entry point to expose one base route.
             </p>
             <div class="arch-kpis">
               <div class="arch-kpi">
                 <strong>Product Service</strong>
-                <span>Catalogo, categorias y proveedores en puerto 9090.</span>
+                <span>Catalog, categories, and suppliers on port 9090.</span>
               </div>
               <div class="arch-kpi">
                 <strong>Inventory Service</strong>
-                <span>Movimientos, stock y recepciones en puerto 9091.</span>
+                <span>Movements, stock, and receipts on port 9091.</span>
               </div>
               <div class="arch-kpi">
                 <strong>Purchase Service</strong>
-                <span>Ordenes y detalles de compra en puerto 9092.</span>
+                <span>Purchase orders and details on port 9092.</span>
               </div>
               <div class="arch-kpi">
                 <strong>API Gateway</strong>
-                <span>Punto unico de entrada en puerto 9000 con /api/v01.</span>
+                <span>Single entry point on port 9000 with /api/v01.</span>
               </div>
             </div>
             <ul>
-              <li>Product Service en puerto 9090.</li>
-              <li>Inventory Service en puerto 9091.</li>
-              <li>Purchase Service en puerto 9092.</li>
-              <li>Gateway en puerto 9000 con la ruta base /api/v01.</li>
+              <li>Product Service on port 9090.</li>
+              <li>Inventory Service on port 9091.</li>
+              <li>Purchase Service on port 9092.</li>
+              <li>Gateway on port 9000 with base route /api/v01.</li>
             </ul>
           </div>
         </div>
@@ -78,7 +85,7 @@
       <section class="view-panel" data-panel="docs">
         <div class="panel-shell docs-content">
           <div class="docs-block" id="docs-api-content">
-            <p>Cargando documentacion general...</p>
+            <p>Loading general documentation...</p>
           </div>
         </div>
       </section>
@@ -92,7 +99,7 @@
         href="https://leandrork12.dev/"
         target="_blank"
         rel="noopener noreferrer"
-        >Portafolio</a
+        >Portfolio</a
       >
       <span class="footer-sep">•</span>
       <a
@@ -100,7 +107,7 @@
         href="https://github.com/leandro12rk/SistemaDeGestionDeInventario"
         target="_blank"
         rel="noopener noreferrer"
-        >Repositorio</a
+        >Repository</a
       >
       <span class="footer-sep">•</span>
       <a
@@ -113,13 +120,38 @@
     </footer>
 
     <div id="docs-parser-fallback" style="display: none">
-      <p>No se encontro el bloque docs general de la coleccion.</p>
+      <p>General collection docs block was not found.</p>
     </div>
 
     <script>
       const yamlPath = "./MicroServiceInventorySystem.yml";
+      const docsDetailsUrl =
+        "https://mintlify.wiki/leandro12rk/SistemaDeGestionDeInventario/introduction";
       let lastYamlText = "";
       let refreshTimerId = null;
+
+      function markdownToHtml(markdownText) {
+        const raw = (markdownText || "").trim();
+        if (!raw) {
+          return "";
+        }
+
+        return window.marked.parse(raw, {
+          gfm: true,
+          breaks: true,
+        });
+      }
+
+      function docsDetailsLinkHtml() {
+        return (
+          '<div class="docs-more-details">' +
+          '<span>More documentation details:</span>' +
+          '<a class="docs-more-link" href="' +
+          docsDetailsUrl +
+          '" target="_blank" rel="noopener noreferrer">View full guide</a>' +
+          "</div>"
+        );
+      }
 
       function escapeHtml(value) {
         return value
@@ -130,29 +162,50 @@
           .replaceAll("'", "&#39;");
       }
 
-      function docsToHtml(rawText) {
-        const safeText = escapeHtml(rawText.trim());
-        const paragraphs = safeText
-          .split(/\n\s*\n/g)
-          .map((block) => block.replace(/\n/g, "<br />"))
-          .map((block) => "<p>" + block + "</p>")
-          .join("");
-        return paragraphs || "<p>No hay documentacion disponible.</p>";
-      }
-
       function extractRootDocs(yamlText) {
-        const rootDocsRegex =
-          /\ndocs:\n\s+content:\s+\|-\n([\s\S]*?)\n\s+type:\s+text\/markdown\n(?:bundled:|extensions:)/;
-        const match = yamlText.match(rootDocsRegex);
-        if (!match) {
-          return "";
+        try {
+          const parsed = window.jsyaml.load(yamlText);
+          const rootDocs = parsed?.docs?.content;
+          if (typeof rootDocs === "string") {
+            return rootDocs.trim();
+          }
+        } catch (error) {
+          console.warn("Could not parse root docs from YAML", error);
         }
 
-        return match[1]
-          .split("\n")
-          .map((line) => line.replace(/^\s{4}/, ""))
-          .join("\n")
-          .trim();
+        return "";
+      }
+
+      function transformDocsToHtml(node) {
+        if (!node || typeof node !== "object") {
+          return;
+        }
+
+        if (node.docs && typeof node.docs.content === "string") {
+          node.docs = {
+            ...node.docs,
+            content: markdownToHtml(node.docs.content),
+            type: "text/html",
+          };
+        }
+
+        if (Array.isArray(node.items)) {
+          node.items.forEach((child) => transformDocsToHtml(child));
+        }
+      }
+
+      function buildOpenCollectionInput(yamlText) {
+        try {
+          const parsed = window.jsyaml.load(yamlText);
+          transformDocsToHtml(parsed);
+          return window.jsyaml.dump(parsed, {
+            lineWidth: -1,
+            noRefs: true,
+          });
+        } catch (error) {
+          console.warn("Could not transform YAML docs to HTML", error);
+          return yamlText;
+        }
       }
 
       function renderApiDocs(yamlText) {
@@ -162,11 +215,11 @@
         if (!docsText) {
           docsContainer.innerHTML = document.getElementById(
             "docs-parser-fallback",
-          ).innerHTML;
+          ).innerHTML + docsDetailsLinkHtml();
           return;
         }
 
-        docsContainer.innerHTML = docsToHtml(docsText);
+        docsContainer.innerHTML = markdownToHtml(docsText) + docsDetailsLinkHtml();
       }
 
       function setActiveView(viewName) {
@@ -288,10 +341,11 @@
       function renderCollection(yamlText) {
         const container = document.getElementById("opencollection-container");
         container.innerHTML = "";
+        const openCollectionInput = buildOpenCollectionInput(yamlText);
 
         new window.OpenCollection({
           target: container,
-          opencollection: yamlText,
+          opencollection: openCollectionInput,
           theme: "light",
         });
 
@@ -309,7 +363,7 @@
             cache: "no-store",
           });
           if (!response.ok) {
-            throw new Error("No se pudo leer MicroServiceInventorySystem.yml");
+            throw new Error("Could not read MicroServiceInventorySystem.yml");
           }
 
           const yamlText = await response.text();
@@ -319,7 +373,7 @@
           }
         } catch (error) {
           container.innerHTML =
-            '<div class="load-error">Error cargando la coleccion: ' +
+            '<div class="load-error">Error loading collection: ' +
             error.message +
             "</div>";
         }

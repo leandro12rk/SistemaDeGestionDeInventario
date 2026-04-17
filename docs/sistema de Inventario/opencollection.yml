@@ -16,45 +16,58 @@ config:
 
 docs:
   content: |-
-    📝 Documentación del Sistema de Gestión de Inventario
-    Bienvenido a la colección de APIs del Sistema de Gestión de Inventario. Este proyecto utiliza una arquitectura de microservicios para gestionar productos, stock y órdenes de compra.
+    # 📦 Inventory Management System API Documentation
 
-    🚀 Arquitectura del Sistema
-    El sistema está dividido en tres servicios principales que se comunican a través de un API Gateway:
+    Welcome to the **Inventory Management System** API collection. This project leverages a robust microservices architecture to streamline product catalog management, stock control, and procurement processes.
 
-    Product Service (Puerto 9090): Gestión del catálogo de productos y categorías.
+    ---
 
-    Inventory Service (Puerto 9091): Control de existencias y almacenes.
+    ## 🚀 System Architecture
 
-    Purchase Service (Puerto 9092): Gestión de órdenes de compra y proveedores.
+    The system is organized into modular microservices accessible through a centralized API Gateway:
 
-    API Gateway (Puerto 9000): Punto de entrada único (Ruta base: /api/v01).
+    | Service | Port | Responsibility |
+    | :--- | :--- | :--- |
+    | **Product Service** | `9090` | Product catalog and category management. |
+    | **Inventory Service** | `9091` | Stock levels and warehouse monitoring. |
+    | **Purchase Service** | `9092` | Purchase orders and supplier management. |
+    | **API Gateway** | `9000` | Single entry point (Base Path: `/api/v01`). |
 
-    🛠️ Configuración Local
-    Para ejecutar estas peticiones, asegúrate de tener levantado el entorno con Docker:
+    ---
 
-    Bases de Datos: PostgreSQL corriendo en los puertos 5432, 5433 y 5434.
+    ## 🛠️ Local Setup
 
-    Servicios: Todos los microservicios deben estar registrados en Eureka (si aplica) o activos.
+    Ensure your local development environment is configured correctly:
 
-    🔐 Variables de Entorno
-    Esta colección utiliza un entorno (environment) llamado probablemente "Local". Asegúrate de que tenga las siguientes variables:
+    * **Databases:** PostgreSQL instances running on ports `5432`, `5433`, and `5434`.
+    * **Microservices:** All services must be registered and active within the discovery service.
 
-    baseUrl: http://localhost:9000/api/v01
+    ---
 
-    productServiceUrl: http://localhost:9090
+    ## 🔐 Environment Variables
 
-    📌 Mejores Prácticas al Probar
-    Filtros: Para el Product Service, puedes filtrar por proveedor usando el parámetro ?supplierName=.
+    Ensure your environment configuration (e.g., "Local") includes the following variables:
 
-    Validación: Todas las peticiones POST y PUT requieren un cuerpo en formato JSON. Verifica que no falte el campo name para evitar errores 400.
+    * `baseUrl`: `http://localhost:9000/api/v01`
+    * `productServiceUrl`: `http://localhost:9090`
 
-    Orden de ejecución: Se recomienda crear primero un Producto antes de intentar actualizar su Inventario.
+    ---
 
-    📞 Contacto y Soporte
-    Desarrollador: Leandro
+    ## 📌 Best Practices
 
-    Repositorio: GitHub - SistemaDeGestionDeInventario
+    * **Filtering:** Use the `?supplierName=` query parameter in the **Product Service** to filter results efficiently.
+    * **Validation:** All `POST` and `PUT` requests require a valid **JSON** body. Ensure mandatory fields (such as `name`) are included to avoid `400 Bad Request` errors.
+    * **Workflow:** To maintain data integrity, always create a **Product** before attempting to update its associated **Inventory**.
+
+    ---
+
+    ## 📞 Contact & Support
+
+    * **Developer:** Leandro
+    * **GitHub Repository:** [leandro12rk/SistemaDeGestionDeInventario](https://github.com/leandro12rk/SistemaDeGestionDeInventario)
+
+    ---
+    *Built with modern microservices principles.*
   type: text/markdown
 bundled: false
 extensions:

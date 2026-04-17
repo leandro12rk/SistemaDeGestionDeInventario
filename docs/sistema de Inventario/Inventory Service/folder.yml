@@ -8,10 +8,13 @@ request:
 
 docs:
   content: |-
-    Gestiona existencias, movimientos de inventario y recepciones de mercancia.
+    ## Inventory Service API
 
-    Modulos
-    StockMovementsModule: altas, actualizaciones, consulta y eliminacion de movimientos.
-    GoodReceiptsModule: registro de recepcion de productos.
-    InventoryModule: consulta y administracion general del inventario.
+    This system manages stock levels, inventory movements, and goods receipts through specialized modules.
+
+    | Module | Description |
+    | :--- | :--- |
+    | **StockMovementsModule** | CRUD operations for inventory movements (additions, updates, queries, and deletions). |
+    | **GoodReceiptsModule** | Registration and recording of product receipts. |
+    | **InventoryModule** | General inventory administration and management queries. |
   type: text/markdown

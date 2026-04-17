@@ -7,16 +7,17 @@ request:
   auth: inherit
 
 docs:
-  content: |-
-    ### CRUD de proveedores relacionados a productos.
+  content: |
+    ## Supplier Management API
 
+    The Supplier Management module provides the following endpoints to handle supplier data operations:
 
-    ```json
-    GET Get All Supplier Data: lista proveedores.
-    GET Get Supplier By Id: detalle de proveedor.
-    GET Get Supplier Name By Id: consulta nombre de proveedor.
-    POST Create a New Supplier: crea proveedor.
-    PUT Update Supplier Data By Id: actualiza proveedor.
-    DELETE Delete Supplier By Id: elimina proveedor.
-    ```
+    | Method | Endpoint | Description |
+    | :--- | :--- | :--- |
+    | **GET** | `/suppliers` | Retrieve a list of all suppliers. |
+    | **GET** | `/suppliers/{id}` | Retrieve details of a specific supplier by ID. |
+    | **GET** | `/suppliers/{id}/name` | Retrieve the name of a supplier by ID. |
+    | **POST** | `/suppliers` | Create a new supplier record. |
+    | **PUT** | `/suppliers/{id}` | Update existing supplier data by ID. |
+    | **DELETE** | `/suppliers/{id}` | Remove a supplier record by ID. |
   type: text/markdown

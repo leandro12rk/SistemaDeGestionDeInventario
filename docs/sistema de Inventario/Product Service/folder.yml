@@ -8,10 +8,13 @@ request:
 
 docs:
   content: |-
-    Gestiona catalogo de productos, categorias y proveedores.
+    ## Product Service API
 
-    Modulos
-    CategoryModule: CRUD de categorias.
-    ProductModule: CRUD de productos y dashboard.
-    SupplierModule: CRUD de proveedores.
+    This microservice manages the product catalog, categories, and suppliers through specialized modules.
+
+    | Module | Description |
+    | :--- | :--- |
+    | **CategoryModule** | Full CRUD operations for categories. |
+    | **ProductModule** | Full CRUD operations for products and dashboard analytics. |
+    | **SupplierModule** | Full CRUD operations for suppliers. |
   type: text/markdown

@@ -7,7 +7,18 @@ request:
   auth: inherit
 
 docs:
-  content: |
-    ### CRUD Completo de los productos
-    ```json
+  content: |+
+    ## Product Module API
+
+    This module provides the necessary endpoints to manage product inventory, offering functionality for CRUD operations, advanced filtering, and dashboard analytics.
+
+    | Method | Endpoint | Description |
+    | :--- | :--- | :--- |
+    | **GET** | `/products` | Retrieve all product records. |
+    | **GET** | `/products?supplierName={name}` | Filter products by variables.. |
+    | **GET** | `/products/dashboard` | Retrieve summary data for the dashboard. |
+    | **POST** | `/products` | Create a new product. |
+    | **PUT** | `/products/{id}` | Update an existing product. |
+    | **DELETE** | `/products/{id}` | Delete a product by ID. |
+
   type: text/markdown

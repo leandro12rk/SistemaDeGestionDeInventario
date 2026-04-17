@@ -8,10 +8,12 @@ request:
 
 docs:
   content: |-
-    Purchase Service
-    Gestiona ordenes de compra y sus detalles.
+    ## Purchase Service API
 
-    Modulos
-    PurchaseOrderDetailsModule: detalle de productos en ordenes.
-    PurchaseOrdersModule: cabecera y estado de ordenes de compra.
+    This service manages purchase orders and their specific details, ensuring a structured procurement process through specialized modules.
+
+    | Module | Description |
+    | :--- | :--- |
+    | **PurchaseOrderDetailsModule** | Management of individual product line items within purchase orders. |
+    | **PurchaseOrdersModule** | Administration of purchase order headers, including status tracking and general info. |
   type: text/markdown
