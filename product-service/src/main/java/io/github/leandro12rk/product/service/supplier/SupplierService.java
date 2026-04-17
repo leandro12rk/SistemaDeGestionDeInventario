@@ -32,11 +32,11 @@ public class SupplierService {
     }
 
     // Delete Product By ID
-    public void deleteSupplierById(Long productId) {
-        if (!supplierRepository.existsById(productId)) {
-            throw new ResourceNotFoundException("Could no Delete , Product not Found: " + productId);
+    public void deleteSupplierById(Long supplierId) {
+        if (!supplierRepository.existsById(supplierId)) {
+            throw new ResourceNotFoundException("Could no Delete , Product not Found: " + supplierId);
         }
-        supplierRepository.deleteById(productId);
+        supplierRepository.deleteById(supplierId);
     }
 
     // Update Supplier By Id

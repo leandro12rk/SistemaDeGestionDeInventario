@@ -37,9 +37,9 @@ public class SupplierController {
         return ResponseEntity.ok(supplierService.getSupplierCompanyName(supplierId));
     }
     // Delete Product By ID
-    @DeleteMapping("/{productId}")
-    public ResponseEntity<Void> deleteSupplierById(@PathVariable Long productId) {
-        supplierService.deleteSupplierById(productId);
+    @DeleteMapping("/{supplierId}")
+    public ResponseEntity<Void> deleteSupplierById(@PathVariable Long supplierId) {
+        supplierService.deleteSupplierById(supplierId);
         return ResponseEntity.noContent().build();
     }
 

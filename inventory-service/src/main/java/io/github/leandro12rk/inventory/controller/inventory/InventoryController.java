@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/inventory")
+//@RequestMapping("/inventory")
 public class InventoryController {
 
     private final ProductClient productClient;
