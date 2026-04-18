@@ -2,7 +2,7 @@ package io.github.leandro12rk.inventory.controller.stockMovements;
 
 
 import io.github.leandro12rk.inventory.model.stockMovements.StockMovementsModel;
-import io.github.leandro12rk.inventory.respository.stockMovements.StockMovementsRespository;
+import io.github.leandro12rk.inventory.repository.stockMovements.StockMovementsRespository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

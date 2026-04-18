@@ -1,4 +1,4 @@
-package io.github.leandro12rk.inventory.respository.goodsReceipts;
+package io.github.leandro12rk.inventory.repository.goodsReceipts;
 
 import io.github.leandro12rk.inventory.model.goodsReceipts.GoodsReceiptsModel;
 import org.springframework.data.jpa.repository.JpaRepository;

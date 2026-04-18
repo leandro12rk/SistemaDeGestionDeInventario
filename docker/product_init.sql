@@ -1,3 +1,5 @@
+--Data Base Product
+
 DROP TABLE IF EXISTS products;
 DROP TABLE IF EXISTS suppliers;
 DROP TABLE IF EXISTS categories;
@@ -63,13 +65,15 @@ CREATE TRIGGER update_products_modtime
     BEFORE UPDATE ON products
     FOR EACH ROW
     EXECUTE FUNCTION update_timestamp_column();
--- Aplicar el trigger a tu tabla de productos
+
+-- Aplicar el trigger a tu tabla de categoria
 CREATE TRIGGER update_products_modtime
     BEFORE UPDATE ON categories
     FOR EACH ROW
     EXECUTE FUNCTION update_timestamp_column();
 
--- Aplicar el trigger a tu tabla de productos
+-- Aplicar el trigger a tu tabla de provedores
+
 CREATE TRIGGER update_products_modtime
     BEFORE UPDATE ON suppliers
     FOR EACH ROW

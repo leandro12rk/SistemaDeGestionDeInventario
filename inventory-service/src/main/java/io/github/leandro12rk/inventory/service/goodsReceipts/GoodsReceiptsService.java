@@ -1,7 +1,7 @@
 package io.github.leandro12rk.inventory.service.goodsReceipts;
 
 import io.github.leandro12rk.inventory.model.goodsReceipts.GoodsReceiptsModel;
-import io.github.leandro12rk.inventory.respository.goodsReceipts.GoodsReceiptsRespository;
+import io.github.leandro12rk.inventory.repository.goodsReceipts.GoodsReceiptsRespository;
 import org.springframework.stereotype.Service;
 
 

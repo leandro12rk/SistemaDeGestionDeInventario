@@ -1,4 +1,4 @@
-package io.github.leandro12rk.inventory.respository.stockMovements;
+package io.github.leandro12rk.inventory.repository.stockMovements;
 
 
 import io.github.leandro12rk.inventory.model.stockMovements.StockMovementsModel;
